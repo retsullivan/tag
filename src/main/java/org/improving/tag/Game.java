@@ -9,17 +9,6 @@ public class Game {
     private Date startTime;
     private Date endTime;
 
-    public Game(){                                      //this is a constructor - name must match the name of the class
-        System.out.println("Ran the constructor");
-    }
-    public Game(int maxInventory){
-        this(maxInventory, 21);                 //this calls the maxInventory, playerAge constructor
-    }
-    public Game(int maxInventory, int playerAge){
-        System.out.println("Max inventory is " + maxInventory);
-        System.out.println("Player age is " + playerAge);
-    }
-
 
     public Date getStartTime() {
         return startTime;

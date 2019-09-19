@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start of Main");
-        Game game = new Game (100,36);             //new is the keyword that invokes the constructor of game
+        Game game = new Game ();                      //new is the keyword that invokes the constructor(s) of game
         System.out.println("Declared Game");
 
         game.run();
