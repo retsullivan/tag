@@ -1,6 +1,8 @@
 package org.improving.tag;
 
 
+import org.improving.tag.commands.LookCommand;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -37,8 +39,11 @@ public class Game {
             System.out.print("> ");
             String input = scanner.nextLine(); //waits for input until the program continues
             input = input.trim();
-            if (input.equalsIgnoreCase("look")) {
-                System.out.println("You look around.");
+
+            LookCommand lCmd = new LookCommand();
+
+            if (lCmd.isValid(input)) {
+                lCmd.execute(input);
             }
             else if (input.equalsIgnoreCase("inventory")) {
                 System.out.println("You are carrying nothing.");
