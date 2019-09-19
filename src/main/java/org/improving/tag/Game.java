@@ -1,6 +1,9 @@
 package org.improving.tag;
 
 
+import org.improving.tag.commands.DanceCommand;
+import org.improving.tag.commands.InventoryCommand;
+import org.improving.tag.commands.JumpCommand;
 import org.improving.tag.commands.LookCommand;
 
 import java.util.Date;
@@ -41,32 +44,31 @@ public class Game {
             input = input.trim();
 
             LookCommand lCmd = new LookCommand();
+            DanceCommand dCmd = new DanceCommand();
+            InventoryCommand iCmd = new InventoryCommand();
+            JumpCommand jCmd = new JumpCommand();
 
             if (lCmd.isValid(input)) {
                 lCmd.execute(input);
             }
-            else if (input.equalsIgnoreCase("inventory")) {
-                System.out.println("You are carrying nothing.");
+            else if (dCmd.isValid(input)) {
+                dCmd.execute(input);
             }
-            else if (input.equalsIgnoreCase("dance")) {
-                System.out.println("You dance around.");
+            else if (jCmd.isValid(input)) {
+                jCmd.execute(input);
             }
-            else if (input.equalsIgnoreCase("jump")) {
-                System.out.println("You jump in the air.");
+            else if (iCmd.isValid(input)) {
+                iCmd.execute(input);
             }
 
             else if (input.equalsIgnoreCase("exit")){
                 System.out.println("Goodbye.");
                 loop = false;
             }
-            else
+            else 
                 System.out.println("Huh? I don't understand.");
-
-
-
         }
         this.setEndTime(new Date());
-
 
     }
 }
