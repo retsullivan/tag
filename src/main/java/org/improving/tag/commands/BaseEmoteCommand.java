@@ -1,24 +1,28 @@
 package org.improving.tag.commands;
 
 
+import org.improving.tag.InputOutput;
+
 public abstract class BaseEmoteCommand implements Command{
 
     private String cmdText;
     private String cmdResponse;
+    private InputOutput io;
 
     // this. forces us to reference the field instead of the parameter.
 
-    public BaseEmoteCommand(String cmdText, String cmdResponse){
+    public BaseEmoteCommand(String cmdText, String cmdResponse, InputOutput io){
         this.cmdText = cmdText;
         this.cmdResponse = cmdResponse;
+        this.io = io;
     }
     @Override
     public boolean isValid(String input){
-        return input.equalsIgnoreCase(cmdText);
+        //trim here instead of in input output so we can theoretically accept whitespace
+        return input.trim().equalsIgnoreCase(cmdText);
     }
-
     public void execute(String input){
-        System.out.println(cmdResponse);
+        io.displayText(cmdResponse);
     }
 
 
