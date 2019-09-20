@@ -19,7 +19,8 @@ public abstract class BaseEmoteCommand implements Command{
     @Override
     public boolean isValid(String input){
         //trim here instead of in input output so we can theoretically accept whitespace
-        return input.trim().equalsIgnoreCase(cmdText);
+        return (input == null? "" :input).trim().equalsIgnoreCase(cmdText);
+        //ternaryoperator <boolean> ? <true> : <false>
     }
     public void execute(String input){
         io.displayText(cmdResponse);

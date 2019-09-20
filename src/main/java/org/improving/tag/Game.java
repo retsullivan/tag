@@ -56,12 +56,12 @@ public class Game {
     }
 
 
-    private BaseEmoteCommand getValidCommand(String input) {
-        BaseEmoteCommand validCommand = null;
+    private Command getValidCommand(String input) {
+        Command validCommand = null;
 
         for (Command command: commands){
             if(command.isValid(input)){
-               validCommand = (BaseEmoteCommand) command;
+               validCommand = command;
             }
         }
         return validCommand;
