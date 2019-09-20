@@ -1,7 +1,9 @@
 package org.improving.tag.commands;
 
-public class LookCommand extends BaseEmoteCommand {
+import org.springframework.stereotype.Component;
 
+@Component
+public class LookCommand extends BaseEmoteCommand {
     public LookCommand() {
         super("look", "You Look Around");
     }

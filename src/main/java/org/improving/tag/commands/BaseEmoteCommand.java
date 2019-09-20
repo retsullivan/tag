@@ -1,5 +1,6 @@
 package org.improving.tag.commands;
 
+
 public abstract class BaseEmoteCommand implements Command{
 
     private String cmdText;

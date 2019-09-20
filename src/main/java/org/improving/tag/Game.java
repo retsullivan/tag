@@ -1,21 +1,20 @@
 package org.improving.tag;
 
 import org.improving.tag.commands.*;
+import org.springframework.stereotype.Component;
+
 
 import java.util.Date;
 import java.util.Scanner;
 
+@Component
 public class Game {
     private Date startTime;
     private Date endTime;
     private Command[] commands;
 
-    public Game () {
-        commands =  new Command[]{              //an array of objects that use interface command
-                    new LookCommand(),
-                    new DanceCommand(),
-                    new JumpCommand(),
-                    new InventoryCommand()};
+    public Game (Command[] commands) {
+        this.commands = commands;
     }
 
     public Date getStartTime() {

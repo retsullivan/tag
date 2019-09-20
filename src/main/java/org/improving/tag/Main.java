@@ -1,15 +1,16 @@
 package org.improving.tag;
-import java.util.Date;
-import java.util.Scanner;
+import org.improving.tag.commands.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Start of Main");
-        Game game = new Game ();                      //new is the keyword that invokes the constructor(s) of game
-        System.out.println("Declared Game");
 
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(SpringContext.class);
+
+        Game game = context.getBean(Game.class); //hands off the Game Class cookie cutter to __?
         game.run();
-        System.out.println("After Run");
+
         long elapsedTicks = game.getEndTime().getTime()-
                 game.getStartTime().getTime();
            double elapsedSeconds = elapsedTicks/1000.00;
