@@ -21,7 +21,7 @@ public class LickCommandTest {
         @Test
         public void isValid_should_be_true_when_input_is_lick(){
             //Act
-            var result = target.isValid("lick a rock");
+            var result = target.isValid("lick a rock", null);
             //Assert
             assertTrue(result);
         }
@@ -29,7 +29,7 @@ public class LickCommandTest {
         @Test
         public void isValid_should_be_true_when_input_is_lick_with_spaces(){
             //Act
-            var result = target.isValid("     lick a rock   ");
+            var result = target.isValid("     lick a rock   ", null);
             //Assert
             assertTrue(result);
         }
@@ -37,7 +37,7 @@ public class LickCommandTest {
         @Test
         public void isValid_should_be_true_when_input_is_lick_with_caps(){
             //Act
-            var result = target.isValid("licK a ROCK");
+            var result = target.isValid("licK a ROCK", null);
             //Assert
             assertTrue(result);
         }
@@ -46,7 +46,7 @@ public class LickCommandTest {
             var io = new TestInputOutput();
             var target = new LickCommand(io);
             //Act
-            var result = target.isValid("foobar");
+            var result = target.isValid("foobar", null);
             //Assert
             assertFalse(result);
 
@@ -57,7 +57,7 @@ public class LickCommandTest {
             var io = new TestInputOutput();
             var target = new LickCommand(io);
             //Act
-            var result = target.isValid(null);
+            var result = target.isValid(null, null);
             //Assert
             assertFalse(result);
         }
@@ -67,7 +67,7 @@ public class LickCommandTest {
             var io = new TestInputOutput();
             var target = new LickCommand(io);
             //Act
-            var result = target.isValid("lick");
+            var result = target.isValid("lick", null);
             //Assert
             assertFalse(result);
 
@@ -75,7 +75,7 @@ public class LickCommandTest {
         @Test
         public void execute_should_display_all_words_but_move() {
             //Act
-            target.execute("lick a rock");
+            target.execute("lick a rock", null);
             //assert
             assertEquals("You lick a rock. Gross.", io.lastText);
         }
@@ -83,7 +83,7 @@ public class LickCommandTest {
         @Test
         public void execute_should_display_all_words_but_move_with_spaces() {
             //Act
-            target.execute("  lick a rock     ");
+            target.execute("  lick a rock     ", null);
             //assert
             assertEquals("You lick a rock. Gross.", io.lastText);
         }
@@ -91,7 +91,7 @@ public class LickCommandTest {
         @Test
         public void execute_should_display_all_words_but_move_with_uppercase() {
             //Act
-            target.execute("Lick A ROCK");
+            target.execute("Lick A ROCK", null);
             //assert
             assertEquals("You lick a rock. Gross.", io.lastText);
         }

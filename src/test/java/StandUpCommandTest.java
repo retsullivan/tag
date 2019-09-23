@@ -19,7 +19,7 @@ public class StandUpCommandTest {
     @Test
     public void isValid_should_be_true_when_input_is_stand_up(){
         //Act
-        var result = target.isValid("stand");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("stand", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
 
@@ -29,7 +29,7 @@ public class StandUpCommandTest {
         var io = new TestInputOutput();     //InputOutput io = new TestInputOutput();
         var target = new StandUpCommand(io);  //DanceCommand target = new DanceCommand(io);
         //Act
-        var result = target.isValid("foobar");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("foobar", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertFalse(result);
 
@@ -40,7 +40,7 @@ public class StandUpCommandTest {
         var io = new TestInputOutput();
         var target = new StandUpCommand(io);
         //Act
-        var result = target.isValid(null);
+        var result = target.isValid(null, null);
         //Assert
         assertFalse(result);
 
@@ -49,7 +49,7 @@ public class StandUpCommandTest {
     @Test
     public void isValid_should_be_true_when_input_is_stand_up_with_spaces(){
         //Act
-        var result = target.isValid("     stand   ");
+        var result = target.isValid("     stand   ", null);
         //Assert
         assertTrue(result);
     }
@@ -57,7 +57,7 @@ public class StandUpCommandTest {
     @Test
     public void isValid_should_be_true_when_input_is_stand_up_with_caps(){
         //Act
-        var result = target.isValid("StAnd");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("StAnd", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
     }
@@ -65,7 +65,7 @@ public class StandUpCommandTest {
     @Test
     public void execute_should_return_phrase(){
         //act
-        target.execute(null);
+        target.execute(null, null);
         //assert
         assertEquals("You stand up.", io.lastText);
     }

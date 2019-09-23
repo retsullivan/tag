@@ -19,7 +19,7 @@ public class MoveCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_move(){
         //Act
-        var result = target.isValid("move to the moon");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("move to the moon", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
     }
@@ -27,7 +27,7 @@ public class MoveCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_move_with_spaces(){
         //Act
-        var result = target.isValid("     move to the moon   ");
+        var result = target.isValid("     move to the moon   ", null);
         //Assert
         assertTrue(result);
     }
@@ -35,7 +35,7 @@ public class MoveCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_dance_with_caps(){
         //Act
-        var result = target.isValid("Move Too thE mOOn");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("Move Too thE mOOn", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
     }
@@ -44,7 +44,7 @@ public class MoveCommandTests {
         var io = new TestInputOutput();     //InputOutput io = new TestInputOutput();
         var target = new MoveCommand(io);  //DanceCommand target = new DanceCommand(io);
         //Act
-        var result = target.isValid("foobar");   //Boolean result - target.isValid("dance");
+        var result = target.isValid("foobar", null);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertFalse(result);
 
@@ -55,7 +55,7 @@ public class MoveCommandTests {
         var io = new TestInputOutput();
         var target = new MoveCommand(io);
         //Act
-        var result = target.isValid(null);
+        var result = target.isValid(null, null);
         //Assert
         assertFalse(result);
     }
@@ -65,7 +65,7 @@ public class MoveCommandTests {
         var io = new TestInputOutput();
         var target = new MoveCommand(io);
         //Act
-        var result = target.isValid("move");
+        var result = target.isValid("move", null);
         //Assert
         assertFalse(result);
 
@@ -73,7 +73,7 @@ public class MoveCommandTests {
     @Test
     public void execute_should_display_all_words_but_move() {
         //Act
-        target.execute("move to the moon");
+        target.execute("move to the moon", null);
         //assert
         assertEquals("You proceed to the moon.", io.lastText);
     }
@@ -81,7 +81,7 @@ public class MoveCommandTests {
     @Test
     public void execute_should_display_all_words_but_move_with_spaces() {
         //Act
-        target.execute("  move to the moon     ");
+        target.execute("  move to the moon     ", null);
         //assert
         assertEquals("You proceed to the moon.", io.lastText);
     }
@@ -89,7 +89,7 @@ public class MoveCommandTests {
     @Test
     public void execute_should_display_all_words_but_move_with_uppercase() {
         //Act
-        target.execute("  moVe to the mooN     ");
+        target.execute("  moVe to the mooN     ", null);
         //assert
         assertEquals("You proceed to the moon.", io.lastText);
     }

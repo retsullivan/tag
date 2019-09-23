@@ -13,10 +13,16 @@ public class Game {
     private Date endTime;
     private Command[] commands;
     private InputOutput io;
+    private Player p;
 
     public Game (Command[] commands, InputOutput io) {
         this.commands = commands;
         this.io = io;
+        this.p = new Player();
+    }
+
+   public Player getPlayer() {
+        return p;
     }
 
     public Date getStartTime() {
@@ -43,7 +49,7 @@ public class Game {
             Command validCommand = getValidCommand(input);
 
             if (null != validCommand){
-                validCommand.execute(input);
+                validCommand.execute(input, this);  //don't type "game: "
             }
             else if (input.equalsIgnoreCase("exit")){
                 io.displayText("Goodbye.");
@@ -60,7 +66,7 @@ public class Game {
         Command validCommand = null;
 
         for (Command command: commands){
-            if(command.isValid(input)){
+            if(command.isValid(input, this)){
                validCommand = command;
             }
         }
