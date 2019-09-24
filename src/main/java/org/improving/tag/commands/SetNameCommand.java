@@ -11,6 +11,7 @@ public class SetNameCommand implements Command{
         this.io = io;
     }
 
+
     @Override
     public boolean isValid(String input, Game game) {
         if (input ==null) return false;
