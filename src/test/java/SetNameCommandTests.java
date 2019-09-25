@@ -21,7 +21,7 @@ public class SetNameCommandTests {
     public void arrange(){
         io = new TestInputOutput();             //InputOutput io = new TestInputOutput();
         target = new SetNameCommand(io);        //SetNameCommand target = new DanceCommand(io);
-        game = new Game(null, null);
+        game = new Game(null, null, null);
     }
 
     @Test
