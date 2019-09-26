@@ -30,29 +30,34 @@ public class MoveCommand implements Command{
 
         Exit exit = null;
 
-        for (var e: game.getPlayer().getLocation().getExits())
-        {
-            if (e.getName().equalsIgnoreCase(destination)) {
-                exit = e;
-            }
-            else {
-                    for(var a : e.getAliases()) {
-                        if (a.equalsIgnoreCase(destination)){
+        if (game.getPlayer().getLocation().getAdversary() != null) {
+            io.displayText("YOU SHALL NOT PASS");
+        }
+        else{
+            for (var e : game.getPlayer().getLocation().getExits()) {
+                    if (e.getName().equalsIgnoreCase(destination)) {
                         exit = e;
-                        break;}
+                    } else {
+                        for (var a : e.getAliases()) {
+                            if (a.equalsIgnoreCase(destination)) {
+                                exit = e;
+                                break;
+                            }
+                        }
+                    }
+                    if (exit != null) {
+                        break;
                     }
                 }
-            if (exit != null) {break;}
+                if (exit == null) {
+                    io.displayText("This route is unavailable.");
+                    return;
+                }
+
+                game.getPlayer().setLocation(exit.getDestination());
+                io.displayText("You travel " + exit.getName() + ".");
+            }
         }
-        if(exit == null){
-            io.displayText("This route is unavailable.");
-            return;
-        }
-
-        game.getPlayer().setLocation(exit.getDestination());
-
-        io.displayText("You travel " + exit.getName() + ".");
-
     }
 
-}
+

@@ -94,4 +94,17 @@ public class MoveCommandTests {
         assertEquals("You proceed to the moon.", io.lastText);
     }
 
-}
+
+    public void move_command_displays_YSNP_if_if_adversary_at_Current_Location()
+    {
+
+
+
+    }
+
+
+    }
+
+
+
+

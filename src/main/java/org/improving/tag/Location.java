@@ -10,7 +10,7 @@ import java.util.List;
         private String description = "";
         private List<String> tags = new ArrayList<>();  //Creates an empty ArrayList<String>
         private List<Exit> exits = new ArrayList<>();
-        private Adversary adversary = new Adversary();
+        private Adversary adversary = null;     //private Adversary adversary = null;
 
         public String getName() {
             return name;
