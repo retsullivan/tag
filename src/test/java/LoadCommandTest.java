@@ -7,6 +7,9 @@ import org.improving.tag.commands.SetNameCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -31,24 +34,24 @@ public class LoadCommandTest {
     }
 
     @Test
-    public void isValid_should_be_true_when_input_is_set_name(){
+    public void isValid_should_be_true_when_input_is_load_filename(){
         //Act
-        var result = target.isValid("load", game);   //Boolean result - target.isValid("@set name=", null);
+        var result = target.isValid("load filename", game);   //Boolean result - target.isValid("@set name=", null);
         //Assert
         assertTrue(result);
     }
 
     @Test
-    public void isValid_should_be_true_when_input_is_Set_Name_with_spaces(){
+    public void isValid_should_be_true_when_input_is__load_filename_load_filename(){
         //Act
-        var result = target.isValid("      load   ", game);
+        var result = target.isValid("     load filename  ", game);
         assertTrue(result);
     }
 
     @Test
-    public void isValid_should_be_true_when_input_is_dance_with_caps(){
+    public void isValid_should_be_true_when_input_is_load_filename_with_caps(){
         //Act
-        var result = target.isValid("LoAd", game);   //Boolean result - target.isValid("dance", null);
+        var result = target.isValid("loAd fileNAme", game);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
     }
@@ -74,22 +77,21 @@ public class LoadCommandTest {
     }
 
     @Test
-    public void isValid_should_be_false_when_input_is_only_set_name_equals(){
+    public void isValid_should_be_false_when_input_is_only_load(){
         var io = new TestInputOutput();
         var target = new SetNameCommand(io);
         //Act
-        var result = target.isValid("@set name =", game);
+        var result = target.isValid("load ", game);
         //Assert
         assertFalse(result);
-
     }
 
     @Test
-    public void execute_should_set_name(){
+    public void execute_should_set_location_to_fileLocation(){
         //act
         game = mock(Game.class);                //makes a fake game for testing purposes
         Player player = new Player(null);               //making a new player
-        player.setName("hi");                       //setting name
+        //player.setLocation();                       //setting name
         player.setHitPoints(50);                    //setting hit points
         player = spy(player);
 
@@ -107,6 +109,22 @@ public class LoadCommandTest {
 
     }
 
+
+ /*   @Test
+    public void load_should_load_save_file() throws IOException {
+        //Arrange - now taken care of by the setup() method
+        String path = "____";
+
+        when(fsa.loadFile(path)).thenReturn(Map.of("location", "The Amazon")); //interacts with a external file
+
+        //Act
+        target.load(path, g);   //loads the save game factory
+
+        //Assert
+        //the location will be the same as the location in the save file
+        assertEquals("The Amazon", g.getPlayer().getLocation().getName());
+
+    } */
 
 
 

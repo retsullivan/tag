@@ -10,6 +10,7 @@ import java.util.List;
         private String description = "";
         private List<String> tags = new ArrayList<>();  //Creates an empty ArrayList<String>
         private List<Exit> exits = new ArrayList<>();
+        private Adversary adversary = new Adversary();
 
         public String getName() {
             return name;
@@ -29,10 +30,12 @@ import java.util.List;
             return tags;
         }
 
-
         public List<Exit> getExits() {
             return exits;
         }
 
+        public Adversary getAdversary() {  return adversary; }
+
+        public void setAdversary(Adversary adversary) { this.adversary = adversary; }
 
     }
