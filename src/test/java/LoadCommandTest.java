@@ -1,32 +1,39 @@
+import org.improving.tag.FileSystemAdaptor;
 import org.improving.tag.Game;
 import org.improving.tag.Player;
+import org.improving.tag.SaveGameFactory;
+import org.improving.tag.commands.LoadCommand;
 import org.improving.tag.commands.SetNameCommand;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
-public class SetNameCommandTests {
+public class LoadCommandTest {
 
     //these are set in the arrange() block
-    SetNameCommand target;
-    TestInputOutput io;
-    Game game;
+    private LoadCommand target;
+    private TestInputOutput io;
+    private Game game;
+    private SaveGameFactory factory;
+    private FileSystemAdaptor fsa;
 
     @BeforeEach
     public void arrange(){
         io = new TestInputOutput();             //InputOutput io = new TestInputOutput();
-        target = new SetNameCommand(io);        //SetNameCommand target = new DanceCommand(io);
+        target = new LoadCommand(io, factory);        //LoadNameCommand target = new LoadCommand(io);
         game = new Game(null, null, null);
+        factory = new SaveGameFactory(fsa, io);
+        fsa = new FileSystemAdaptor();
     }
 
     @Test
     public void isValid_should_be_true_when_input_is_set_name(){
         //Act
-        var result = target.isValid("@set name=rachel", game);   //Boolean result - target.isValid("@set name=", null);
+        var result = target.isValid("load", game);   //Boolean result - target.isValid("@set name=", null);
         //Assert
         assertTrue(result);
     }
@@ -34,15 +41,14 @@ public class SetNameCommandTests {
     @Test
     public void isValid_should_be_true_when_input_is_Set_Name_with_spaces(){
         //Act
-        var result = target.isValid("     @set name=rachel   ", game);
-        //Assert
+        var result = target.isValid("      load   ", game);
         assertTrue(result);
     }
 
     @Test
     public void isValid_should_be_true_when_input_is_dance_with_caps(){
         //Act
-        var result = target.isValid("@sEt name=RacHel", game);   //Boolean result - target.isValid("dance", null);
+        var result = target.isValid("LoAd", game);   //Boolean result - target.isValid("dance", null);
         //Assert
         assertTrue(result);
     }
@@ -93,8 +99,8 @@ public class SetNameCommandTests {
         target.execute("@set name=Rachel", game);   //This is changing the player name
 
         //Assert
-                                //this is checking to makes sure getPlayer was called 2 times
-                                // verify(game, times(2)).getPlayer(); (an interesting exercise in figuring out how to use mock - not needed)
+        //this is checking to makes sure getPlayer was called 2 times
+        // verify(game, times(2)).getPlayer(); (an interesting exercise in figuring out how to use mock - not needed)
         //verify that name was set to "Rachel"
         verify (player).setName("Rachel");      //we need to make sure this meets our requirements
         //assertEquals("Your name is now Rachel", io.lastText);

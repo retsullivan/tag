@@ -61,7 +61,7 @@ public class SaveGameFactoryTest {
     @Test
     public void load_should_load_save_file() throws IOException {
         //Arrange - now taken care of by the setup() method
-        String path = "this is a fake path";
+        String path = "____";
 
         when(fsa.loadFile(path)).thenReturn(Map.of("location", "The Amazon")); //interacts with a external file
 

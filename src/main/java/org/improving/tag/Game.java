@@ -56,7 +56,11 @@ public class Game {
         this.setStartTime(new Date());
         boolean loop = true;
 
+       // io.displayText("Type One " + "/n" + "New Game" + "/n" + "Load Game");
+        //io.displayPrompt('> ');
+
         while (loop) {
+
             io.displayPrompt("> ");
             String input = io.receiveInput();
             Command validCommand = getValidCommand(input);
