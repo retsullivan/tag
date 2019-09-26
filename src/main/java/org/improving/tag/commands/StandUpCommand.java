@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class StandUpCommand extends BaseEmoteCommand{
 
-        public StandUpCommand(InputOutput io) {
+    public StandUpCommand(InputOutput io) {
 
-            super("stand", "You stand up.", io);
+        super("stand", "You stand up.", io);
     }
 }
