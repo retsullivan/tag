@@ -16,7 +16,8 @@ public class AttackCommand implements Command {
     }
 
     @Override
-    public boolean isValid(String input, Game game) {
+    public boolean isValid(String input, Game game)
+    {
         return input.trim().equalsIgnoreCase("attack");
     }
 
@@ -34,7 +35,7 @@ public class AttackCommand implements Command {
 
             if (rand < 20) {
                 adversary.setDamageTaken(damageTaken + playerAttackStrength);
-                io.displayText("Adversary Hit Points are down to "
+                io.displayText("Direct hit! " + adversary.getName()+ "'s hit Points are down to "
                         + (adversary.getHitPoints() - adversary.getDamageTaken()));
                 io.displayText("That's a lot of damage!");
                 if (adversary.getHitPoints() - adversary.getDamageTaken() <= 0 ){
@@ -42,7 +43,7 @@ public class AttackCommand implements Command {
                     game.getPlayer().getLocation().setAdversary(null);
                 }
             }
-            else io.displayText("Attacked failed - You have no power here!");
+            else io.displayText(adversary.getName() + " evaded your attack - You have no power here!");
         }
     }
 }

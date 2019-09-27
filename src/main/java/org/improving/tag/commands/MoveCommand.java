@@ -32,6 +32,7 @@ public class MoveCommand implements Command{
 
         if (game.getPlayer().getLocation().getAdversary() != null) {
             io.displayText("YOU SHALL NOT PASS");
+            io.displayText("A wild " +game.getPlayer().getLocation().getAdversary().getName() + " appears!");
         }
         else{
             for (var e : game.getPlayer().getLocation().getExits()) {
