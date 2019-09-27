@@ -4,8 +4,9 @@ public class Adversary {
 
     private String name;
     private int hitPoints;
-    private int damageTaken;
+    private int damageTaken = 0;
     private int attackDamage;
+
 
     public String getName() {
         return name;

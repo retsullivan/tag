@@ -19,6 +19,7 @@ public class Game {
     private List<Location> locationList = new ArrayList<>(100);
     private Location startingLocation;
     private final SaveGameFactory saveFactory;
+    //private Adversary adversary;
 
     public Game(Command[] commands, InputOutput io, SaveGameFactory saveFactory) {   //this is the constructor of Game
         startingLocation = buildWorld();
@@ -96,8 +97,9 @@ public class Game {
         tdh.setName("The Deathly Hallows");
         this.locationList.add(tdh);
 
+
         var td = new Location();
-        td.setName("The Dessert");
+        td.setName("The Desert");
         this.locationList.add(td);
 
         var ta = new Location();
