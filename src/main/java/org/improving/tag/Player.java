@@ -4,20 +4,11 @@ public class Player {
     private String name = "The Player";
     private int hitPoints = 100;
     private Location location;
-    private Adversary adversary;
+    private Adversary adversary = null;
 
     //this constructor requires a location to make a player
     public Player(Location location) {
         this.location = location;
-
-        //creating an Adversary named Sauron at The Deathly Hallows
-        if (location.getName().equalsIgnoreCase("The Deathly Hallows")){
-            Adversary adversaryAtTheDeathlyHallows= new Adversary();
-            adversaryAtTheDeathlyHallows.setName("Sauron");
-            adversaryAtTheDeathlyHallows.setHitPoints(40);
-            location.setAdversary(adversaryAtTheDeathlyHallows);
-        }
-        else location.setAdversary(null);
     }
 
     public Location getLocation() {return location;}

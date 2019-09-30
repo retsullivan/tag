@@ -66,7 +66,16 @@ public class Game {
             String input = io.receiveInput();
             Command validCommand = getValidCommand(input);
 
-            if (null != validCommand) {
+            try{
+                validCommand.execute(input, this);
+            } catch (GameExitException ex){  //if input was exit, it throws a GameExitException
+                loop = false;
+            }
+
+        }
+        this.setEndTime(new Date());
+
+          /*  if (null != validCommand) {
                 validCommand.execute(input, this);  //don't type "game: "
             } else if (input.equalsIgnoreCase("exit")) {
                 io.displayText("Goodbye.");
@@ -74,9 +83,9 @@ public class Game {
 
                 loop = false;
             } else
-                io.displayText("Huh? I don't understand.");
-        }
-        this.setEndTime(new Date());
+                io.displayText("Huh? I don't understand."); */
+
+
     }
 
 
@@ -125,6 +134,10 @@ public class Game {
         var md = new Location();
         md.setName("Mount Doom");
         this.locationList.add(md);
+        Adversary adversaryAtMD= new Adversary();
+        adversaryAtMD.setName("Sauron");
+        adversaryAtMD.setHitPoints(40);
+        md.setAdversary(adversaryAtMD);
 
         var tvd = new Location();
         tvd.setName("The Volcano of Death");
@@ -141,7 +154,6 @@ public class Game {
         var tms = new Location();
         tms.setName("The Mountains");
         this.locationList.add(tms);
-
 
         //initializing all the exits
         tdh.getExits().add(new Exit("Heaven Avenue" ,tmcs, "h", "ave","heaven", "ha"));

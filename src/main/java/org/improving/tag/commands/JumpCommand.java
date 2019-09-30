@@ -7,6 +7,7 @@ public class JumpCommand extends BaseEmoteCommand {
 
     public JumpCommand(InputOutput io) {
         super("You jump around like a kangaroo!", io, "Jump", "j", "ju","jum", "leap");
+
     }
 }
 

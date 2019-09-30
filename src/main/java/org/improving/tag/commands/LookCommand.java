@@ -9,7 +9,7 @@ public class LookCommand extends BaseAliasedCommand {
     private InputOutput io;
 
     public LookCommand(InputOutput io) {
-        super("look", "whereami", "Where am I", "donde estoy", "l");
+        super(io,"look", "whereami", "Where am I", "donde estoy", "l");
         this.io=io;
         //super("look", "You Look Around", io);
     }

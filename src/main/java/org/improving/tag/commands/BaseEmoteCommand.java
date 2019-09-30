@@ -14,7 +14,7 @@ public abstract class BaseEmoteCommand extends BaseAliasedCommand{
     // this. forces us to reference the field instead of the parameter.
 
     public BaseEmoteCommand(String cmdResponse, InputOutput io, String...aliases){
-        super(aliases);
+        super(io,aliases);
         this.cmdResponse = cmdResponse;
         this.io = io;
     }
