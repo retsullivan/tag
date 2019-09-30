@@ -8,6 +8,6 @@ public class StandUpCommand extends BaseEmoteCommand{
 
     public StandUpCommand(InputOutput io) {
 
-        super("stand", "You stand up.", io);
+        super("You stand up.", io, "Stand", "Stand Up");
     }
 }

@@ -3,29 +3,25 @@ package org.improving.tag.commands;
 
 import org.improving.tag.Game;
 import org.improving.tag.InputOutput;
+import org.springframework.stereotype.Component;
 
-public abstract class BaseEmoteCommand implements Command{
+import java.util.Arrays;
 
-    private String cmdText;
+public abstract class BaseEmoteCommand extends BaseAliasedCommand{
     private String cmdResponse;
     private InputOutput io;
 
     // this. forces us to reference the field instead of the parameter.
 
-    public BaseEmoteCommand(String cmdText, String cmdResponse, InputOutput io){
-        this.cmdText = cmdText;
+    public BaseEmoteCommand(String cmdResponse, InputOutput io, String...aliases){
+        super(aliases);
         this.cmdResponse = cmdResponse;
         this.io = io;
     }
-    @Override
-    public boolean isValid(String input, Game game){
-        //trim here instead of in input output so we can theoretically accept whitespace
-        return (input == null? "" :input).trim().equalsIgnoreCase(cmdText);
-        //ternaryoperator <boolean> ? <true> : <false>
-    }
+@Override
     public void execute(String input, Game game){
         io.displayText(cmdResponse);
     }
 
-
 }
+

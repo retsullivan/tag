@@ -17,4 +17,5 @@ public class SpringContext {
     @Bean
     public Scanner getScanner () {return new Scanner(System.in); }
 
+
 }
