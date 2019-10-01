@@ -15,4 +15,13 @@ public class Inventory {
     public void addItem(Item item) {
         items.add(item);
     }
+
+    public String getInventoryDisplay() {
+        String inventoryDisplay = "";
+        for(Item item: items){
+            //displayString = displayString + "/n" + item;
+            inventoryDisplay += "\n"+ item;
+        }
+        return inventoryDisplay;
+    }
 }
