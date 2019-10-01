@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class ConsoleInputOutput implements org.improving.tag.InputOutput {
+public class ConsoleInputOutput implements InputOutput {
 private Scanner scanner;
 
     public ConsoleInputOutput (Scanner scanner) {
@@ -19,12 +19,17 @@ private Scanner scanner;
         return scanner.nextLine();
     }
 
-
-    public void displayText(String text) {
-        System.out.println(text);
+    @Override
+    public void displayText(Object text) {
+        if (!"".equals(text.toString())) { //if(text.toString !="")
+            System.out.println(text);
+        }
     }
-
     public void displayPrompt(String prompt){
         System.out.print(prompt);
     }
+
+    public void displayNewLine(){
+    }
+
 }

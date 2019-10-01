@@ -1,5 +1,6 @@
 package org.improving.tag;
 
+import org.improving.tag.Items.UniqueItems;
 import org.improving.tag.commands.*;
 import org.springframework.stereotype.Component;
 
@@ -98,6 +99,7 @@ public class Game {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
         this.locationList.add(tdh);
+        tdh.setTreasure(new TreasureChest(UniqueItems.HORCRUX, "a mysterious diary"));
 
 
         var td = new Location();
@@ -111,6 +113,8 @@ public class Game {
         var tmcs = new Location();
         tmcs.setName("The Mac and Cheese Shop");
         this.locationList.add(tmcs);
+        //putting a treasure chest at the Mac and cheese shop w. the one ring
+        tmcs.setTreasure(new TreasureChest(UniqueItems.THE_ONE_RING, "a Kraft Box"));
 
         var tr = new Location();
         tr.setName("The Reef");
@@ -119,6 +123,7 @@ public class Game {
         var tm = new Location();
         tm.setName("The Mall");
         this.locationList.add(tm);
+        tm.setTreasure(new TreasureChest(UniqueItems.EGGO_WAFFLE, "a vintage toaster"));
 
         var tvm = new Location();
         tvm.setName("The Velvet Moose");
@@ -147,6 +152,8 @@ public class Game {
         var tms = new Location();
         tms.setName("The Mountains");
         this.locationList.add(tms);
+        tms.setTreasure(new TreasureChest(UniqueItems.BLUE_SHELL, "an abandoned go-cart"));
+
 
         //initializing all the exits
         tdh.getExits().add(new Exit("Heaven Avenue" ,tmcs, "h", "ave","heaven", "ha"));

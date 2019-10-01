@@ -1,7 +1,7 @@
 import org.improving.tag.InputOutput;
 
 public class TestInputOutput implements InputOutput {
-    public String lastText;
+    public Object lastText;
 
     @Override
     public String receiveInput() {
@@ -9,13 +9,18 @@ public class TestInputOutput implements InputOutput {
     }
 
     @Override
-    public void displayText(String text) {
-        this.lastText = text;
+    public void displayText(Object text) {
+        this.lastText = text.toString();
 
     }
 
     @Override
     public void displayPrompt(String prompt) {
+    }
+
+    @Override
+    public void displayNewLine() {
 
     }
+
 }
