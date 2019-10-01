@@ -22,7 +22,9 @@ public class MoveCommand extends BaseAliasedCommand{
   @Override
   public String getCommandPart(String input){
       var parts = input.split(" ");
-      //if (parts.length == 1) return null;
+      if (parts.length == 1){
+          throw new UnsupportedOperationException();
+      }
       return parts[0];
   }
       @Override

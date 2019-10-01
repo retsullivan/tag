@@ -9,29 +9,20 @@ import org.springframework.stereotype.Component;
     @Component //lets spring find the class
     public class ExitCommand extends BaseAliasedCommand {
 
-        private InputOutput io;
-        private SaveGameFactory saveFactory;
+        private final SaveGameFactory saveFactory;
+        //making these final *forces* you to initialize it
 
         public ExitCommand(SaveGameFactory saveFactory, InputOutput io) {
-    //spring looks for a constructor and supplies all the components it can find for the parameters
-            super(io,"exit", "E", "X", "ex", "exi");
-            this.io=io;
+            //spring looks for a constructor and supplies all the components it can find for the parameters
+            super(io, "exit", "E", "X", "ex", "exi"); //this io comes from BaseAliasedCommand
             this.saveFactory = saveFactory;  //letting Spring initialize the saveFactory
         }
-
+        @Override
         public void childExecute(String input, Game game) throws GameExitException {
             io.displayText("Goodbye");
             saveFactory.save(game);
             throw new GameExitException();
         }
-
-        //@Override
-        //public void childExecute(String input, Game game) {
-         //       io.displayText("Goodbye"); //display text automatically moves to next line
-         //       saveFactory.save(this);
-        //}
-
-
-    }
+}
 
 

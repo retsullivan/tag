@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LookCommand extends BaseAliasedCommand {
-    private InputOutput io;
+
 
     public LookCommand(InputOutput io) {
         super(io,"look", "whereami", "Where am I", "donde estoy", "l");
-        this.io=io;
+
         //super("look", "You Look Around", io);
     }
 

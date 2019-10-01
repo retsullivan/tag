@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public abstract class BaseAliasedCommand<BasedAliasedCommand> implements Command {
-    private final InputOutput io;
+    protected final InputOutput io;   //changed this to protected so that it's children can use it
     private List<String> aliases = new ArrayList<>();
 
     public BaseAliasedCommand(InputOutput io, String...aliases){
@@ -20,8 +20,11 @@ public abstract class BaseAliasedCommand<BasedAliasedCommand> implements Command
 
     @Override
     public boolean isValid(String input, Game game){
+        try{
         var trimmedInput = getCommandPart(input).trim();
-        return aliases.stream().anyMatch(trimmedInput::equalsIgnoreCase);
+        return aliases.stream().anyMatch(trimmedInput::equalsIgnoreCase);}
+        catch(UnsupportedOperationException ex){
+        return false;}
     }
 
     public void childExecute(String input, Game game) throws GameExitException {}
@@ -34,7 +37,7 @@ public abstract class BaseAliasedCommand<BasedAliasedCommand> implements Command
     public void execute(String input, Game game) throws GameExitException{
         //letting the child class handle the command
         try{  childExecute(input, game);
-        } catch (UnsupportedOperationException ex)
+        } catch (UnsupportedOperationException ex) /// need to be specific so that the game one can fall up
         //if input was invalid, do this - it's a runtime exception
         { io.displayText(getErrorMessage());
         }

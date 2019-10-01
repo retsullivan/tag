@@ -67,27 +67,20 @@ public class Game {
             Command validCommand = getValidCommand(input);
 
             try{
-                validCommand.execute(input, this);
+                if (null != validCommand){
+                    validCommand.execute(input, this);
+                }
+                else{
+                    io.displayText("Huh? I don't understand.");
+                }
+
             } catch (GameExitException ex){  //if input was exit, it throws a GameExitException
                 loop = false;
             }
 
         }
         this.setEndTime(new Date());
-
-          /*  if (null != validCommand) {
-                validCommand.execute(input, this);  //don't type "game: "
-            } else if (input.equalsIgnoreCase("exit")) {
-                io.displayText("Goodbye.");
-                saveFactory.save(this);        //we added a saved version of the game
-
-                loop = false;
-            } else
-                io.displayText("Huh? I don't understand."); */
-
-
     }
-
 
     private Command getValidCommand(String input) {
         Command validCommand = null;
