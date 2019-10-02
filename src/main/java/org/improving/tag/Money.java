@@ -1,7 +1,4 @@
 package org.improving.tag.Items;
 
-public class Gold {
-
-
-
+public class Money {
 }
