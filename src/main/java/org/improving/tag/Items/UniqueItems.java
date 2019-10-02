@@ -14,6 +14,12 @@ public enum UniqueItems implements Item{
     BLUE_SHELL("a blue shell", "a mighty offensive weapon. Use it to knock out the leader."),
     HORCRUX("a horcrux", "an evil talisman containing a portion of a sinister soul."),
     EGGO_WAFFLE("an Eggo waffle", "part of a balanced breakfast and rumored to boost psychic abilities"),
+    JELLOED_STAPLER("a stapler encased in Jello", "an iconic prank"),
+    GIANT_POKING_DEVICE("a giant poking device", "long enough to stretch across a New York City street"),
+    SONIC_SCREWDRIVER("a sonic screwdriver", "used for wibbly wobbly, timey wimey...stuff"),
+    FLAMETHROWER("a flamethrower", "used for attacking mustachioed Italian plumbers"),
+    RIDDLES_IN_THE_DARK("riddles in the dark", "string or nothing?"),
+
     NOTHING("", ""){
         //@Override
        // public String getDescription(){
@@ -42,4 +48,5 @@ public enum UniqueItems implements Item{
     public String toString(){
         return name;
     }
+
 }

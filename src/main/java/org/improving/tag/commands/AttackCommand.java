@@ -2,9 +2,12 @@ package org.improving.tag.commands;
 import org.improving.tag.Adversary;
 import org.improving.tag.Game;
 import org.improving.tag.InputOutput;
+import org.improving.tag.Items.Item;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
+
+import static org.improving.tag.Items.UniqueItems.NOTHING;
 
 @Component
 public class AttackCommand implements Command {
@@ -40,6 +43,13 @@ public class AttackCommand implements Command {
                 io.displayText("That's a lot of damage!");
                 if (adversary.getHitPoints() - adversary.getDamageTaken() <= 0 ){
                     io.displayText(adversary.getName() + " has been defeated!");
+
+                    Item item = game.getPlayer().getLocation().getAdversary().getItem();
+                    if (item != NOTHING) {
+                        io.displayText("You have looted " + item + ".");
+                        io.displayText(item.getDescription() + "added to your inventory.");
+                        game.getPlayer().getInventory().addItem(item);
+                    }
                     game.getPlayer().getLocation().setAdversary(null);
                 }
             }

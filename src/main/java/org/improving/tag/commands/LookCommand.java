@@ -29,7 +29,7 @@ public class LookCommand extends BaseAliasedCommand {
     public void execute(String input, Game game) {
         var location = game.getPlayer().getLocation();
 
-        io.displayText("You arrive at " + location.getName());
+        io.displayText("You are at " + location.getName());
         io.displayText(location.getDescription());
         if(location.getTreasureDescription() != "") {
             io.displayText("You see a " + location.getTreasure() + " in the corner.");
