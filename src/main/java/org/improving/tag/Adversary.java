@@ -1,6 +1,7 @@
 package org.improving.tag;
 
 import org.improving.tag.Items.Item;
+import org.improving.tag.Items.UniqueItems;
 
 public class Adversary {
 
@@ -8,8 +9,7 @@ public class Adversary {
     private int hitPoints;
     private int damageTaken = 0;
     private int attackDamage;
-    public Item item;
-
+    public Item item = UniqueItems.NOTHING;
 
     public String getName() {return name;}
 
@@ -44,6 +44,7 @@ public class Adversary {
     public Item getItem() { return item; }
 
     public void setItem(Item item) {this.item = item;  }
+
 
 
 

@@ -1,24 +1,24 @@
 package org.improving.tag.Items;
 
-import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 public enum UniqueItems implements Item{
 //this is secretly a hashmap
 // the UniqueItems are keys, the descriptions are values
 
-    THE_ONE_RING("the one ring", "a truly precious item.  You wants it."),
-    BLUE_SHELL("a blue shell", "a mighty offensive weapon. Use it to knock out the leader."),
-    HORCRUX("a horcrux", "an evil talisman containing a portion of a sinister soul."),
-    EGGO_WAFFLE("an Eggo waffle", "part of a balanced breakfast and rumored to boost psychic abilities"),
-    JELLOED_STAPLER("a stapler encased in Jello", "an iconic prank"),
-    GIANT_POKING_DEVICE("a giant poking device", "long enough to stretch across a New York City street"),
-    SONIC_SCREWDRIVER("a sonic screwdriver", "used for wibbly wobbly, timey wimey...stuff"),
-    FLAMETHROWER("a flamethrower", "used for attacking mustachioed Italian plumbers"),
-    RIDDLES_IN_THE_DARK("riddles in the dark", "string or nothing?"),
+    THE_ONE_RING("One Ring", "a truly precious item.  You wants it."),
+    BLUE_SHELL("Blue Shell", "a mighty offensive weapon. Use it to knock out the leader."),
+    HORCRUX("Horcrux", "an evil talisman containing a portion of a sinister soul."),
+    EGGO_WAFFLE("EGGO Waffle", "part of a balanced breakfast and rumored to boost psychic abilities"),
+    JELLOED_STAPLER("Stapler Encased in Jello", "an iconic prank"),
+    GIANT_POKING_DEVICE("Giant Poking Device", "long enough to stretch across a New York City street"),
+    SONIC_SCREWDRIVER("Sonic Screwdriver", "used for wibbly wobbly, timey wimey...stuff"),
+    FLAMETHROWER("Flamethrower", "used for attacking mustachioed Italian plumbers"),
+    RIDDLES_IN_THE_DARK("Riddle in the dark", "string or nothing"),
+    UNFORGETTABLE_MUSHROOM("Unforgettable Mushroom", "an edible toadstool that will make you larger"),
+    EVERLASTING_GOBSTOPPER("Everlasting Gobstopper", "a never-ending morsel that tastes like pure imagination"),
+    ROLL_OF_DUCT_TAPE("Roll of Duct Tape", "used for fixing anything and everything"),
 
     NOTHING("", ""){
         //@Override
@@ -27,8 +27,8 @@ public enum UniqueItems implements Item{
        // }
     };
 
-    private String description;
-    private String name;
+    private final String description;
+    private final String name;
 
     UniqueItems(String name, String description){
         this.name = name;
@@ -46,7 +46,12 @@ public enum UniqueItems implements Item{
 
     @Override
     public String toString(){
-        return name;
+        return name + ": " + description;
     }
+
+//    @Override
+//    public int compareTo(UniqueItems other){
+//
+//    }
 
 }

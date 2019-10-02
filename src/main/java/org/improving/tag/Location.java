@@ -62,4 +62,19 @@ import java.util.List;
 
 
         }
+
+        @Override
+        public String toString() {      //overriding Object's regular "ToString"
+            return this.getName();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Location) {
+                Location location = (Location) obj;
+                return this.getName().equals(location.getName()) && this.getDescription().equals(location.getDescription());
+            } else return super.equals(obj); //equals shouldn't throw, so we revert to Object class definition
+        }
+
+
     }

@@ -47,7 +47,7 @@ public class AttackCommand implements Command {
                     Item item = game.getPlayer().getLocation().getAdversary().getItem();
                     if (item != NOTHING) {
                         io.displayText("You have looted " + item + ".");
-                        io.displayText(item.getDescription() + "added to your inventory.");
+                        io.displayText(item.getName() + " added to your inventory.");
                         game.getPlayer().getInventory().addItem(item);
                     }
                     game.getPlayer().getLocation().setAdversary(null);

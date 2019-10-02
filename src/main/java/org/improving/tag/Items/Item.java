@@ -4,8 +4,8 @@ import org.improving.tag.Game;
 
 public interface Item {
 
-    String getDescription();
+  String getDescription();
 
-    String getName();
+  String getName();
 
 }

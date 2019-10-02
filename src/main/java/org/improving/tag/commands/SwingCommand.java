@@ -29,26 +29,40 @@ public class SwingCommand implements Command {
         if (adversary == null) {
             io.displayText("You swing at the air for some reason.");
 
-        } else {
+        } else { //adversary present
             System.nanoTime();
             var criticalHit = new Random().nextInt(1_000_000_000) % 4;
             if (criticalHit == 1) {
                 io.displayText("Critical Hit! You have defeated " + adversary.getName());
+                Item item = game.getPlayer().getLocation().getAdversary().getItem();
+                if (item != NOTHING) {
+                    io.displayText("You have looted " + item + ".");
+                    io.displayText(item.getDescription() + " added to your inventory.");
+                    game.getPlayer().getInventory().addItem(item);
+                }
                 game.getPlayer().getLocation().setAdversary(null);
             } else {
-                int damageTaken = adversary.getDamageTaken();
-                int playerAttackStrength = 5;
-                adversary.setDamageTaken(damageTaken + playerAttackStrength);
-                io.displayText("Nice swing! Adversary Hit Points are down to "
-                        + (adversary.getHitPoints() - adversary.getDamageTaken()));
-                io.displayText("That's a lot of damage!");
+                var success = new Random().nextInt(1_000_000_000) % 3;
+                if (success == 1) {
+                    int damageTaken = adversary.getDamageTaken();
+                    int playerAttackStrength = 5;
+                    adversary.setDamageTaken(damageTaken + playerAttackStrength);
+                    io.displayText("Nice swing! Adversary Hit Points are down to "
+                            + (adversary.getHitPoints() - adversary.getDamageTaken()));
+                    io.displayText("That's a lot of damage!");
+                }
+                else {
+                     io.displayText("Swing and a miss! " + adversary.getName() + " evaded your attack ");
+                }
+                }
+
                 if (adversary.getHitPoints() - adversary.getDamageTaken() <= 0) {
                     io.displayText(adversary.getName() + " has been defeated!");
 
                     Item item = game.getPlayer().getLocation().getAdversary().getItem();
                     if (item != NOTHING) {
                         io.displayText("You have looted " + item + ".");
-                        io.displayText(item.getDescription() + "added to your inventory.");
+                        io.displayText(item.getDescription() + " added to your inventory.");
                         game.getPlayer().getInventory().addItem(item);
                     }
 
@@ -57,7 +71,7 @@ public class SwingCommand implements Command {
             }
         }
     }
-}
+
 
 
 
